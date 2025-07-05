@@ -1,8 +1,10 @@
 'use strict';
 
-document.querySelectorAll('#thumbs a').forEach((element) => {
-  element.addEventListener('click', (e) => {
-    document.querySelector('#largeImg').src = element.href;
+document.querySelector('#thumbs').addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+
+  if (link && document.querySelector('#thumbs').contains(link)) {
     e.preventDefault();
-  });
+    document.querySelector('#largeImg').src = link.href;
+  }
 });
